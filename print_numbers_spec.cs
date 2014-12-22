@@ -153,6 +153,15 @@ namespace PrintNumbers
         }
 
         [Test]
+        public void it_should_not_allow_to_register_divisor_with_empty_or_null_associated_text()
+        {
+            var outputStream = new OutputMock();
+            var sut = new NumberPrinter(outputStream);
+            Assert.Throws<ArgumentException>(() => sut.Register(13, ""));
+            Assert.Throws<ArgumentException>(() => sut.Register(13, null));
+        }
+
+        [Test]
         public void it_should_override_the_old_registered_text_if_registering_the_same_divisor_again()
         {
             var outputStream = new OutputMock();

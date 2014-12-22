@@ -41,6 +41,8 @@ namespace NumbersLibrary
         public void Register(int divisor, string outputText)
         {
             if(divisor<=0) throw new ArgumentException("Only divisors greater than zero are allowed");
+            if(string.IsNullOrWhiteSpace(outputText)) throw new ArgumentException("Output text must be a non-null string");
+
             specialNumbers[divisor] = outputText;
         }
     }
